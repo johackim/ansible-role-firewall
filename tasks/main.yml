@@ -14,7 +14,6 @@
     owner: root
     group: root
     mode: 0744
-  notify: restart firewall
 
 - name: Copy firewall init script into place.
   template:
@@ -37,7 +36,6 @@
 - name: Configure the firewall service.
   service:
     name: firewall
-    state: "{{ firewall_state }}"
     enabled: "{{ firewall_enabled_at_boot }}"
 
 - import_tasks: disable-other-firewalls.yml
